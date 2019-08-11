@@ -1,5 +1,0 @@
-# This is the first edition of candlestick plotting function
-
-function plot()
-    body
-end

@@ -14,5 +14,5 @@ module FinancialPlots
 
     include("FTS.jl")
 
-    export FTS
+    export FTS, convertPriceData
 end # module

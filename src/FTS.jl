@@ -6,18 +6,17 @@ We are going to use a sstruct for this
 #include("FTS.jl")
 
 #newcode.
-module newcode
-
-    using DataFrames
-
-    struct FTS
-        prices::DataFrame
-    end
 
 
+using DataFrames
 
+struct FTS
+    name::String
+    prices::DataFrame
+end
 
-    function convertPriceData(data::DataFrame)
-        return FTS(data)
-    end
+function convertPriceData(data::DataFrame, name::String)
+    colnames = ["index", "open", "hign", "low", "close", "volume", "adjusted"]
+    names!(data, Symbol.(colnames))
+    return FTS(name, data)
 end
