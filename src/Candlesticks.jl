@@ -3,14 +3,16 @@
 using Plots
 import Plots.plot
 
-function plot(data::FTS)
+function plot(data::FTS, tic_period::Int64 = 5, show_volume::Bool = false)
 
     periods = nrow(data.prices)
 
     p = plot(legend = false,
+             #layout = grid(2, 1, heights = [.8, .2]),
              title = "$(data.name) stock price",
              title_position = :left,
-             xticks = (1:30, Dates.format.(data.prices.index, "yy-mm-d")),
+             xticks = (1:tic_period:periods,
+                       Dates.format.(data.prices.date, "yy-mm-d")),
              xrotation = rad2deg(pi/3)
              )
 
@@ -30,10 +32,10 @@ end
 
 rectangle(w, h, x, y) = Shape(x .+ [0,w,w,0], y .+ [0,0,h,h])
 
-plot(da)
+plot(da, 10)
 
-@time plot(da)
+#@time plot(da)
 
-@code_warntype plot(da)
+#@code_warntype plot(da)
 
-@code_native plot(da)x
+#@code_native plot(da)

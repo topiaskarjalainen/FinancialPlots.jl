@@ -16,7 +16,7 @@ struct FTS
 end
 
 function convertPriceData(data::DataFrame, name::String)
-    colnames = ["index", "open", "hign", "low", "close", "volume", "adjusted"]
+    colnames = ["index", "date", "open", "hign", "low", "close", "volume", "adjusted"]
     names!(data, Symbol.(colnames))
     return FTS(name, data)
 end

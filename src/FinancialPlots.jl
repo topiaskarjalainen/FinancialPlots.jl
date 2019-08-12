@@ -13,6 +13,8 @@ module FinancialPlots
     using DataFrames
 
     include("FTS.jl")
-
     export FTS, convertPriceData
+
+    include("Candlesticks.jl")
+    export plot
 end # module
